@@ -29,6 +29,178 @@ main {
   margin: 0 auto;
 }
 
+.blackHoleLanding {
+  position: relative;
+  min-height: 100svh;
+  margin: 0 calc(50% - 50vw);
+  overflow: hidden;
+  background: #000;
+  color: #fff;
+}
+
+.blackHoleLanding > div {
+  min-height: 100svh;
+}
+
+.blackHoleLanding::after {
+  position: absolute;
+  right: 2rem;
+  bottom: 0;
+  left: 2rem;
+  z-index: 20;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.14);
+  content: "";
+  pointer-events: none;
+}
+
+.blackHoleNav {
+  position: absolute;
+  top: 0;
+  right: max(24px, calc((100vw - 1320px) / 2));
+  left: max(24px, calc((100vw - 1320px) / 2));
+  z-index: 30;
+  min-height: 88px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.blackHoleMark {
+  font-size: 1.4rem;
+  font-weight: 800;
+  letter-spacing: -0.08em;
+}
+
+.blackHoleMark span { color: #ff9d3d; }
+
+.blackHoleNav > div {
+  display: flex;
+  gap: clamp(1.5rem, 4vw, 3.25rem);
+}
+
+.blackHoleNav > div a {
+  color: rgba(255, 255, 255, 0.62);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  transition: color 180ms ease;
+}
+
+.blackHoleNav > div a:hover { color: #fff; }
+
+.blackHoleCopy {
+  position: absolute;
+  top: 50%;
+  left: max(24px, calc((100vw - 1320px) / 2));
+  z-index: 20;
+  width: min(43rem, 48vw);
+  transform: translateY(-45%);
+}
+
+.blackHoleEyebrow {
+  margin-bottom: 1.4rem;
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 0.7rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.blackHoleCopy h1 {
+  margin-bottom: 0;
+  font-size: clamp(3.4rem, 6.5vw, 7.2rem);
+  font-weight: 450;
+  letter-spacing: -0.065em;
+  line-height: 0.91;
+}
+
+.blackHoleCopy h1 span { color: rgba(255, 255, 255, 0.53); }
+
+.blackHoleIntro {
+  max-width: 31rem;
+  margin: 1.8rem 0 0;
+  color: rgba(255, 255, 255, 0.57);
+  font-size: clamp(0.95rem, 1.4vw, 1.12rem);
+  line-height: 1.6;
+}
+
+.blackHoleActions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 2.2rem;
+}
+
+.blackHolePrimary,
+.blackHoleSecondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.9rem;
+  padding: 0.92rem 1.2rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  transition: background 180ms ease, border-color 180ms ease, transform 180ms ease;
+}
+
+.blackHolePrimary {
+  background: #fff;
+  color: #080808;
+  font-weight: 700;
+}
+
+.blackHolePrimary:hover { background: #ffad5d; transform: translateY(-2px); }
+
+.blackHoleSecondary {
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.blackHoleSecondary:hover { border-color: rgba(255, 255, 255, 0.55); color: #fff; }
+
+.blackHoleControls {
+  position: absolute;
+  right: max(24px, calc((100vw - 1320px) / 2));
+  bottom: 2rem;
+  left: max(24px, calc((100vw - 1320px) / 2));
+  z-index: 30;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: rgba(255, 255, 255, 0.42);
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.blackHoleControls button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+  cursor: pointer;
+  transition: color 180ms ease;
+}
+
+.blackHoleControls button:hover { color: #fff; }
+
+.statusDot {
+  width: 0.42rem;
+  height: 0.42rem;
+  border-radius: 50%;
+  background: #ff9d3d;
+  box-shadow: 0 0 10px rgba(255, 157, 61, 0.9);
+}
+
+.statusDot.paused { background: #777; box-shadow: none; }
+
 .nav {
   min-height: 88px;
   display: flex;
@@ -304,6 +476,23 @@ footer div { display: flex; gap: 2rem; }
 
 @media (max-width: 760px) {
   main { width: min(100% - 28px, 1320px); }
+  .blackHoleLanding { margin-right: calc(50% - 50vw); margin-left: calc(50% - 50vw); }
+  .blackHoleLanding > div { min-height: 100svh; }
+  .blackHoleNav { right: 20px; left: 20px; min-height: 72px; }
+  .blackHoleNav > div { gap: 1.15rem; }
+  .blackHoleNav > div a:nth-child(2) { display: none; }
+  .blackHoleCopy {
+    top: 7.5rem;
+    right: 24px;
+    left: 24px;
+    width: auto;
+    transform: none;
+  }
+  .blackHoleCopy h1 { font-size: clamp(2.75rem, 13vw, 4.7rem); line-height: 0.94; }
+  .blackHoleIntro { max-width: 22rem; margin-top: 1.2rem; }
+  .blackHoleActions { margin-top: 1.5rem; }
+  .blackHoleControls { right: 20px; bottom: 1.4rem; left: 20px; justify-content: flex-end; }
+  .cameraHint { display: none; }
   .nav { min-height: 74px; }
   .navLinks { gap: 1rem; }
   .navLinks a:nth-child(2) { display: none; }

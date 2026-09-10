@@ -1,3 +1,5 @@
+import { BlackHoleLanding } from "@/components/BlackHoleLanding";
+
 const projects = [
   {
     number: "01",
@@ -42,36 +44,7 @@ const Arrow = () => <span aria-hidden="true">↗</span>;
 export default function Home() {
   return (
     <main id="top">
-      <nav className="nav" aria-label="Primary navigation">
-        <a className="wordmark" href="#top" aria-label="Rob Stigau, home">
-          RS<span>.</span>
-        </a>
-        <div className="navLinks">
-          <a href="#projects">Projects</a>
-          <a href="#about">About</a>
-          <a href="#contact">Contact</a>
-        </div>
-      </nav>
-
-      <section className="hero">
-        <div className="heroTopline">
-          <p>Developer &amp; maker</p>
-          <p>Based in California</p>
-        </div>
-        <h1>
-          Building useful
-          <span> digital experiences.</span>
-        </h1>
-        <div className="heroBottom">
-          <p>
-            I&apos;m Rob. This is a collection of projects I&apos;ve designed,
-            built, and learned from.
-          </p>
-          <a className="primaryButton" href="#projects">
-            Browse projects <span aria-hidden="true">↓</span>
-          </a>
-        </div>
-      </section>
+      <BlackHoleLanding />
 
       <section className="section" id="projects">
         <div className="sectionHeader">
