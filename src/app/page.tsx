@@ -1,83 +1,158 @@
+const projects = [
+  {
+    number: "01",
+    title: "Project name",
+    type: "Web application",
+    description:
+      "A short description of the project, the problem it solves, and what makes it interesting.",
+    tags: ["Next.js", "TypeScript", "Design"],
+    tone: "lime",
+  },
+  {
+    number: "02",
+    title: "Project name",
+    type: "Product concept",
+    description:
+      "Use this space to explain your role, the central idea, and the outcome of the work.",
+    tags: ["Product", "Research", "Prototype"],
+    tone: "blue",
+  },
+  {
+    number: "03",
+    title: "Project name",
+    type: "Creative experiment",
+    description:
+      "A home for smaller experiments, unusual ideas, or a technically challenging side project.",
+    tags: ["Experiment", "Interaction", "Code"],
+    tone: "orange",
+  },
+  {
+    number: "04",
+    title: "Project name",
+    type: "Open-source tool",
+    description:
+      "Highlight what you built, who it helps, and the most important thing you learned from it.",
+    tags: ["Open source", "Tooling", "GitHub"],
+    tone: "violet",
+  },
+];
+
 const Arrow = () => <span aria-hidden="true">↗</span>;
 
 export default function Home() {
   return (
-    <main>
+    <main id="top">
       <nav className="nav" aria-label="Primary navigation">
         <a className="wordmark" href="#top" aria-label="Rob Stigau, home">
-          RS<span className="accent">.</span>
+          RS<span>.</span>
         </a>
         <div className="navLinks">
-          <a href="#work">Work</a>
+          <a href="#projects">Projects</a>
           <a href="#about">About</a>
-          <a href="https://github.com/RobStigau" target="_blank" rel="noreferrer">
-            GitHub <Arrow />
-          </a>
+          <a href="#contact">Contact</a>
         </div>
       </nav>
 
-      <section className="hero" id="top">
-        <p className="eyebrow">
-          <span className="statusDot" /> Available for the next good idea
-        </p>
+      <section className="hero">
+        <div className="heroTopline">
+          <p>Developer &amp; maker</p>
+          <p>Based in California</p>
+        </div>
         <h1>
-          I make digital things
-          <br />
-          <span>that feel human.</span>
+          Building useful
+          <span> digital experiences.</span>
         </h1>
-        <div className="heroFooter">
+        <div className="heroBottom">
           <p>
-            I&apos;m Rob — a builder focused on thoughtful products, useful
-            software, and the details that make both memorable.
+            I&apos;m Rob. This is a collection of projects I&apos;ve designed,
+            built, and learned from.
           </p>
-          <a className="roundButton" href="#work" aria-label="See selected work">
-            ↓
+          <a className="primaryButton" href="#projects">
+            Browse projects <span aria-hidden="true">↓</span>
           </a>
         </div>
       </section>
 
-      <section className="work section" id="work">
-        <div className="sectionHeading">
-          <p>01 / Selected work</p>
-          <p>More coming soon</p>
+      <section className="section" id="projects">
+        <div className="sectionHeader">
+          <div>
+            <p className="sectionLabel">Selected projects</p>
+            <h2>Things I&apos;ve worked on.</h2>
+          </div>
+          <p className="sectionCount">04 projects</p>
         </div>
 
-        <article className="projectCard">
-          <div className="projectNumber">001</div>
-          <div className="projectCopy">
-            <p className="projectLabel">Current project</p>
-            <h2>This portfolio is just getting started.</h2>
-            <p>
-              The foundation is live: fast, responsive, and ready for the work
-              worth sharing next.
-            </p>
-          </div>
-          <div className="projectMark" aria-hidden="true">R</div>
-        </article>
+        <div className="projectGrid">
+          {projects.map((project) => (
+            <article className="projectCard" key={project.number}>
+              <div className={`projectVisual ${project.tone}`}>
+                <span>{project.number}</span>
+                <div className="projectWindow" aria-hidden="true">
+                  <div className="windowBar">
+                    <i />
+                    <i />
+                    <i />
+                  </div>
+                  <div className="windowContent">
+                    <b />
+                    <span />
+                    <span />
+                  </div>
+                </div>
+              </div>
+              <div className="projectInfo">
+                <div className="projectTitleRow">
+                  <div>
+                    <p>{project.type}</p>
+                    <h3>{project.title}</h3>
+                  </div>
+                  <span className="projectArrow" aria-hidden="true">↗</span>
+                </div>
+                <p className="projectDescription">{project.description}</p>
+                <ul className="tagList" aria-label={`${project.title} technologies`}>
+                  {project.tags.map((tag) => <li key={tag}>{tag}</li>)}
+                </ul>
+              </div>
+            </article>
+          ))}
+        </div>
       </section>
 
-      <section className="about section" id="about">
-        <div className="sectionHeading">
-          <p>02 / About</p>
-        </div>
+      <section className="section about" id="about">
+        <p className="sectionLabel">About me</p>
         <div className="aboutGrid">
-          <h2>Curious by default. Precise by choice.</h2>
+          <h2>I like making ideas real.</h2>
           <div className="aboutCopy">
             <p>
-              I enjoy turning fuzzy ideas into clear, useful experiences. This
-              space will collect the projects, experiments, and lessons along
-              the way.
+              I&apos;m interested in the space where thoughtful design meets
+              solid engineering. I enjoy learning quickly, solving practical
+              problems, and building work that feels clear and intentional.
             </p>
-            <a className="textLink" href="https://github.com/RobStigau" target="_blank" rel="noreferrer">
-              Follow the work on GitHub <Arrow />
+            <p>
+              This site is a living archive. I&apos;ll keep adding projects,
+              notes, and experiments as I make them.
+            </p>
+            <a href="https://github.com/RobStigau" target="_blank" rel="noreferrer">
+              Visit my GitHub <Arrow />
             </a>
           </div>
         </div>
       </section>
 
+      <section className="contact" id="contact">
+        <p className="sectionLabel">Get in touch</p>
+        <h2>Have something interesting in mind?</h2>
+        <a href="https://github.com/RobStigau" target="_blank" rel="noreferrer">
+          Start a conversation <Arrow />
+        </a>
+      </section>
+
       <footer>
         <p>© {new Date().getFullYear()} Rob Stigau</p>
-        <a href="#top">Back to top ↑</a>
+        <div>
+          <a href="https://github.com/RobStigau" target="_blank" rel="noreferrer">GitHub</a>
+          <a href="#top">Back to top ↑</a>
+        </div>
       </footer>
     </main>
   );
