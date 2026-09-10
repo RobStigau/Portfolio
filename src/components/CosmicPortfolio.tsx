@@ -5,25 +5,29 @@ import { useEffect, useRef, useState } from "react";
 const projects = [
   {
     number: "01",
-    eyebrow: "Flagship build",
-    title: "Featured Web Experience",
+    eyebrow: "Embedded system",
+    title: "LED Clock + Alarm",
     description:
-      "A polished digital product built around a clear idea, thoughtful interaction, and a fast, dependable frontend.",
+      "An ESP32-powered clock and alarm with a color display, rotary-encoder controls, and wireless control of a separate LED receiver.",
     detail:
-      "Use this space for the story behind your strongest project: the problem, the decisions you made, and the result you delivered.",
-    tags: ["Next.js", "TypeScript", "Product design"],
+      "The C++ firmware drives a multi-view interface for setting the clock, alarm, brightness, fade timing, and six LED colors. Alarm and lighting commands travel over ESP-NOW, with a 30-second heartbeat keeping the receiver in sync.",
+    tags: ["ESP32", "C++", "ESP-NOW", "PlatformIO"],
     tone: "solar",
+    visual: "clock",
+    href: "https://github.com/RobStigau/LEDCLK",
   },
   {
     number: "02",
-    eyebrow: "Product system",
-    title: "Interface in Orbit",
+    eyebrow: "Wireless robotics",
+    title: "Remote ESP Rover",
     description:
-      "A product concept that turns complicated information into a focused, intuitive experience people can understand quickly.",
+      "A wirelessly controlled ESP32 rover that turns incoming controller data into drive, braking, and servo-steering commands.",
     detail:
-      "Add screenshots, a live link, and measurable outcomes when this case study is ready to launch.",
-    tags: ["Research", "UX strategy", "Prototype"],
+      "The receiver firmware uses ESP-NOW control data, a TB6612FNG dual motor driver, and an ESP32-compatible servo library. It handles forward and reverse motion, active braking, standby behavior, and real-time steering values.",
+    tags: ["ESP32", "C++", "ESP-NOW", "Motor control"],
     tone: "lunar",
+    visual: "rover",
+    href: "https://github.com/RobStigau/Remote-controlled-ESP-rover",
   },
   {
     number: "03",
@@ -35,6 +39,8 @@ const projects = [
       "This card is designed for work that proves curiosity, creative coding, or a technically difficult breakthrough.",
     tags: ["Creative code", "WebGL", "Interaction"],
     tone: "nebula",
+    visual: "planet",
+    href: "https://github.com/RobStigau",
   },
   {
     number: "04",
@@ -46,6 +52,8 @@ const projects = [
       "Connect this project to its GitHub repository and explain who it helps, how it works, and what you learned building it.",
     tags: ["Tooling", "Automation", "GitHub"],
     tone: "aurora",
+    visual: "planet",
+    href: "https://github.com/RobStigau",
   },
 ];
 
@@ -80,12 +88,41 @@ function ProjectCard({ project }: { project: Project }) {
     >
       <div className="missionVisual" aria-hidden="true">
         <div className="coordinateGrid" />
-        <div className="projectPlanet">
-          <span className="planetCore" />
-          <span className="orbit orbitOne"><i /></span>
-          <span className="orbit orbitTwo"><i /></span>
-          <span className="orbit orbitThree" />
-        </div>
+        {project.visual === "clock" ? (
+          <div className="clockRig">
+            <span className="clockAntenna" />
+            <div className="clockScreen">
+              <span className="clockStatus">ALARM · ARMED</span>
+              <strong>12:00</strong>
+              <span className="clockMeridiem">AM</span>
+              <div className="clockColors"><i /><i /><i /><i /><i /><i /></div>
+            </div>
+            <span className="clockDial"><i /></span>
+            <span className="signalWave waveOne" />
+            <span className="signalWave waveTwo" />
+            <span className="signalWave waveThree" />
+          </div>
+        ) : project.visual === "rover" ? (
+          <div className="roverRig">
+            <span className="roverScan" />
+            <div className="roverBody">
+              <span className="roverAntenna"><i /></span>
+              <span className="roverDeck" />
+              <span className="roverSensor" />
+              <span className="roverWheel wheelLeft" />
+              <span className="roverWheel wheelRight" />
+            </div>
+            <span className="roverPath pathOne" />
+            <span className="roverPath pathTwo" />
+          </div>
+        ) : (
+          <div className="projectPlanet">
+            <span className="planetCore" />
+            <span className="orbit orbitOne"><i /></span>
+            <span className="orbit orbitTwo"><i /></span>
+            <span className="orbit orbitThree" />
+          </div>
+        )}
         <span className="visualIndex">{project.number}</span>
         <span className="visualTelemetry">SYS / ONLINE</span>
         <span className="crosshair crosshairOne">+</span>
@@ -117,8 +154,8 @@ function ProjectCard({ project }: { project: Project }) {
           <div>
             <span>Mission note</span>
             <p>{project.detail}</p>
-            <a href="https://github.com/RobStigau" target="_blank" rel="noreferrer">
-              Explore on GitHub <span aria-hidden="true">↗</span>
+            <a href={project.href} target="_blank" rel="noreferrer">
+              View repository <span aria-hidden="true">↗</span>
             </a>
           </div>
         </div>

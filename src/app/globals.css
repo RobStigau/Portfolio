@@ -804,6 +804,213 @@ footer div { display: flex; gap: 2rem; }
   transform: translate(-50%, -50%);
 }
 
+.clockRig,
+.roverRig {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: min(74%, 25rem);
+  aspect-ratio: 1.45;
+  transform: translate(-50%, -50%) translateZ(25px);
+  transition: transform 500ms cubic-bezier(.2,.8,.2,1);
+}
+
+.missionCard:hover .clockRig,
+.missionCard:hover .roverRig {
+  transform: translate(-50%, -52%) translateZ(35px) scale(1.025);
+}
+
+.clockRig {
+  padding: 1.5rem;
+  border: 1px solid rgba(255, 167, 97, .24);
+  border-radius: 1.2rem;
+  background: linear-gradient(145deg, rgba(42, 30, 28, .94), rgba(9, 10, 14, .98));
+  box-shadow: 0 28px 55px rgba(0,0,0,.48), inset 0 1px rgba(255,255,255,.09), 0 0 60px rgba(255,126,49,.1);
+  transform: translate(-50%, -50%) translateZ(25px) rotateX(6deg) rotateY(-8deg);
+}
+
+.missionCard:hover .clockRig {
+  transform: translate(-50%, -52%) translateZ(35px) rotateX(2deg) rotateY(-3deg) scale(1.025);
+}
+
+.clockScreen {
+  position: relative;
+  height: 100%;
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  overflow: hidden;
+  border: 1px solid rgba(255, 150, 72, .28);
+  border-radius: .65rem;
+  background:
+    repeating-linear-gradient(0deg, rgba(255,255,255,.018) 0 1px, transparent 1px 4px),
+    radial-gradient(circle at 50% 40%, rgba(255,127,48,.17), transparent 48%),
+    #040506;
+  box-shadow: inset 0 0 45px rgba(255,116,29,.08);
+}
+
+.clockScreen::after {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(110deg, transparent 30%, rgba(255,255,255,.06) 43%, transparent 55%);
+  content: "";
+  transform: translateX(-110%);
+  animation: screenSweep 6s ease-in-out infinite;
+}
+
+.clockScreen strong {
+  color: #fff0de;
+  font-size: clamp(2.3rem, 6vw, 4.5rem);
+  font-weight: 400;
+  letter-spacing: .08em;
+  line-height: 1;
+  text-shadow: 0 0 16px rgba(255, 145, 63, .46);
+}
+
+.clockStatus,
+.clockMeridiem {
+  position: absolute;
+  color: rgba(255,180,117,.64);
+  font-size: .5rem;
+  letter-spacing: .16em;
+}
+.clockStatus { top: 1rem; left: 1rem; }
+.clockMeridiem { right: 1rem; bottom: 1rem; }
+
+.clockColors {
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+  display: flex;
+  gap: .32rem;
+}
+
+.clockColors i { width: .35rem; height: .35rem; border-radius: 50%; background: #ff554f; box-shadow: 0 0 5px currentColor; }
+.clockColors i:nth-child(2) { background: #ffad45; }
+.clockColors i:nth-child(3) { background: #eae86d; }
+.clockColors i:nth-child(4) { background: #63e7ac; }
+.clockColors i:nth-child(5) { background: #64b6ff; }
+.clockColors i:nth-child(6) { background: #d079ff; }
+
+.clockDial {
+  position: absolute;
+  right: -0.72rem;
+  bottom: 24%;
+  width: 1.45rem;
+  height: 1.45rem;
+  border: 1px solid rgba(255,255,255,.28);
+  border-radius: 50%;
+  background: #18191d;
+  box-shadow: 0 5px 13px rgba(0,0,0,.5);
+}
+.clockDial i { position: absolute; top: 3px; left: 50%; width: 1px; height: 5px; background: #ff9b53; }
+
+.clockAntenna {
+  position: absolute;
+  top: -1.8rem;
+  right: 14%;
+  width: 1px;
+  height: 2rem;
+  background: linear-gradient(transparent, rgba(255,172,103,.7));
+}
+
+.signalWave {
+  position: absolute;
+  top: -2.65rem;
+  right: calc(14% - .5rem);
+  width: 1rem;
+  height: 1rem;
+  border: 1px solid rgba(255,155,83,.7);
+  border-radius: 50%;
+  opacity: 0;
+  animation: signalOut 2.8s ease-out infinite;
+}
+.waveTwo { animation-delay: .9s; }
+.waveThree { animation-delay: 1.8s; }
+
+.roverRig { aspect-ratio: 1.35; }
+
+.roverBody {
+  position: absolute;
+  top: 39%;
+  left: 50%;
+  width: 68%;
+  height: 32%;
+  border: 1px solid rgba(165,176,255,.45);
+  border-radius: .55rem .55rem .95rem .95rem;
+  background: linear-gradient(160deg, #5e6bb1, #20243c 60%, #0b0d15);
+  box-shadow: inset 0 1px rgba(255,255,255,.2), 0 24px 40px rgba(0,0,0,.45), 0 0 50px rgba(111,130,255,.17);
+  transform: translate(-50%, -50%) rotate(-3deg);
+  animation: roverHover 3.8s ease-in-out infinite;
+}
+
+.roverDeck {
+  position: absolute;
+  top: -32%;
+  left: 21%;
+  width: 53%;
+  height: 38%;
+  border: 1px solid rgba(185,194,255,.45);
+  background: #191d31;
+  transform: skewX(-9deg);
+}
+
+.roverSensor {
+  position: absolute;
+  top: 31%;
+  right: 9%;
+  width: .72rem;
+  height: .72rem;
+  border-radius: 50%;
+  background: #b7c1ff;
+  box-shadow: 0 0 10px #8192ff, 0 0 22px #6378ff;
+}
+
+.roverAntenna {
+  position: absolute;
+  top: -74%;
+  left: 36%;
+  width: 1px;
+  height: 2.3rem;
+  background: rgba(186,195,255,.6);
+}
+.roverAntenna i { position: absolute; top: 0; left: -3px; width: 7px; height: 7px; border-radius: 50%; background: #96a5ff; box-shadow: 0 0 10px #7386ff; }
+
+.roverWheel {
+  position: absolute;
+  bottom: -42%;
+  width: 24%;
+  aspect-ratio: 1;
+  border: .42rem solid #090a0f;
+  border-radius: 50%;
+  background: radial-gradient(circle, #7f8ed8 0 15%, #242a44 16% 43%, #0a0b11 44%);
+  box-shadow: 0 8px 15px rgba(0,0,0,.5);
+}
+.wheelLeft { left: 7%; }
+.wheelRight { right: 7%; }
+
+.roverScan {
+  position: absolute;
+  top: -8%;
+  left: 50%;
+  width: 74%;
+  height: 74%;
+  border-radius: 50%;
+  background: conic-gradient(from 210deg, transparent 0 74%, rgba(129,146,255,.17) 85%, transparent 92%);
+  animation: roverScan 5s linear infinite;
+  transform: translateX(-50%);
+}
+
+.roverPath {
+  position: absolute;
+  right: 6%;
+  bottom: 6%;
+  left: 6%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(129,146,255,.55), transparent);
+}
+.pathTwo { bottom: 0; opacity: .35; transform: scaleX(.72); }
+
 .planetCore {
   position: absolute;
   top: 50%;
@@ -1171,6 +1378,25 @@ footer div { display: flex; gap: 2rem; }
   50% { opacity: .72; transform: scale(1.04); }
 }
 
+@keyframes screenSweep {
+  0%, 42% { transform: translateX(-110%); }
+  70%, 100% { transform: translateX(110%); }
+}
+
+@keyframes signalOut {
+  0% { opacity: .75; transform: scale(.25); }
+  85%, 100% { opacity: 0; transform: scale(3.3); }
+}
+
+@keyframes roverHover {
+  0%, 100% { transform: translate(-50%, -50%) rotate(-3deg) translateY(0); }
+  50% { transform: translate(-50%, -50%) rotate(-2deg) translateY(-5px); }
+}
+
+@keyframes roverScan {
+  to { transform: translateX(-50%) rotate(360deg); }
+}
+
 @keyframes beamPulse {
   0%, 100% { opacity: .45; transform: translateX(-50%) scale(.7); }
   50% { opacity: 1; transform: translateX(-50%) scale(1.45); }
@@ -1252,7 +1478,11 @@ footer div { display: flex; gap: 2rem; }
   .signalSection::before,
   .signalCopy > a::before { animation: none !important; }
   .cosmicNoise,
-  .signalStars { animation: none !important; }
+  .signalStars,
+  .clockScreen::after,
+  .signalWave,
+  .roverBody,
+  .roverScan { animation: none !important; }
   .blackHoleNav,
   .blackHoleCopy > *,
   .blackHoleControls { animation: none !important; }
