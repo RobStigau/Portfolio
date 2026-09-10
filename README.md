@@ -1,6 +1,6 @@
 # Rob Stigau — Portfolio
 
-A Next.js portfolio starter configured for deployment on Vercel.
+A Next.js portfolio starter configured as a static site for GitHub Pages.
 
 ## Local development
 
@@ -18,6 +18,8 @@ pnpm lint
 pnpm build
 ```
 
-## Deploy to Vercel
+## Production site
 
-Import this GitHub repository at [vercel.com/new](https://vercel.com/new). Vercel detects Next.js automatically, so no framework overrides are needed. Keep the root directory set to the repository root and deploy. Future pushes to the production branch will trigger new deployments.
+The production portfolio is published at [robstigau.github.io](https://robstigau.github.io/).
+
+Running `pnpm build` creates the deployable static website in the `out` directory.
