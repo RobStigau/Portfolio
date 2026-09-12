@@ -16,9 +16,9 @@ const projects = [
     title: "Remote-Controlled ESP Rover",
     type: "Wireless robotics",
     summary:
-      "A wirelessly controlled ESP32 rover that turns incoming controller data into drive, braking, and servo-steering commands.",
+      "I designed and built a rear-wheel-drive rover with Ackermann steering, controlled by two ESP32 microcontrollers communicating wirelessly through the ESP-NOW protocol.",
     details:
-      "The receiver firmware combines ESP-NOW control data, a TB6612FNG dual motor driver, and an ESP32-compatible servo library for responsive movement and steering.",
+      "The system translates real-time user input into DC motor speed and direction commands while controlling a servo for front-wheel steering. During development, I tested multiple prototypes and redesigned the chassis, steering, and wheels several times to improve strength and stability. This project strengthened my skills in embedded programming, wireless communication, hardware integration, troubleshooting, and iterative engineering design.",
     tags: ["ESP32", "C++", "Motor control", "Robotics"],
     href: "https://github.com/RobStigau/Remote-controlled-ESP-rover",
     visual: "rover",
