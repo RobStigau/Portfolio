@@ -7,17 +7,17 @@ export const metadata: Metadata = {
     template: "%s | Rob Stigau",
   },
   description:
-    "Explore Rob Stigau's interactive portfolio — digital products, creative experiments, and useful tools built with care.",
+    "Rob Stigau's portfolio of embedded systems, wireless robotics, software, and hands-on engineering projects.",
   openGraph: {
     title: "Rob Stigau — Portfolio",
-    description: "An interactive archive of digital products, experiments, and useful tools.",
+    description: "Embedded systems, wireless robotics, and practical software built with care.",
     type: "website",
   },
 };
 
 export const viewport: Viewport = {
-  colorScheme: "dark",
-  themeColor: "#030407",
+  colorScheme: "light",
+  themeColor: "#f3f0e8",
 };
 
 export default function RootLayout({
